@@ -1,0 +1,98 @@
+
+html, body { width: 100%; height: 100%;}
+
+#game {
+	background-color: black;
+	background-image: url("../imgs/black-green-mini.png");
+	background-repeat: repeat;
+	/*Establecemos la pocisión para que no se mueva tanto cuando cargue*/
+	background-position: 0px 100px;
+	/*Se le agregan 100px para que en IE no salga cortado de la derecha*/
+	width: calc(100% + 100px);
+	height: 100%;
+	/*El absolute arregla el bug de la pantalla incompleta en firefox*/
+	position: absolute;
+	left: -50px;
+}
+
+/* -moz -ms y -webkit son para quitar las scrollbars de los distintos navegadores (firefox, IE y chrome) */
+body {
+	background: #004432; 
+	margin: 0; 
+	padding: 0; 
+	overflow: -moz-scrollbars-none; -ms-overflow-style: none;
+}
+
+.kineticjs-content { display: block !important; }
+	::-webkit-scrollbar { 
+	display: none; 
+}
+
+#score{
+	text-align: center;
+	font-family: "Century Gothic", sans-serif;
+	font-size: 20;
+	opacity: 0.9;
+	/*Espacio a la izquierda*/
+	/*text-indent: 10px;*/
+	/*Esto es para que el width y height sean iguales al tamaño del texto*/
+	/*display:inline-block;*/
+		
+	/* bring your own prefixes */
+	transform: translate(-50%, -50%);
+}
+
+#parrafoScore{
+	text-align: center;
+	width: 100%;
+	/*Esto es para que se mantenga en el centro. se usa relative para que se vea HD. Antes fixed*/
+	position: relative;
+}
+
+#inicio{
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	color: white;
+
+	background: #004432; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#004432, #228b22); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#004432, #228b22); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#004432, #228b22); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#004432, #228b22); /* Standard syntax */
+}
+
+#innerInicio{
+	width: 300px;
+}
+
+/*#backLeaderboard{
+	display: none;
+	width: 100%;
+	text-align: right;
+	position: static;
+}
+#leaderboard{
+	position: absolute;
+	width: 150px;
+	height: 300px;
+	top: 10px;
+	right: 10px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 10px;
+}*/
+
+.centered{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate(-50%, -50%);
+}
+
+h4{
+	text-align: center;
+	color: white;
+	font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+	letter-spacing: 2px;
+}

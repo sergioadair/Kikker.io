@@ -1,0 +1,111 @@
+<html lang='es'>
+<head>
+	<meta charset='utf-8'>
+	<!-- Es para deshabilitar el zoom en exploradores moviles-->
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<title>Squash</title>
+
+	<script
+	  src="https://code.jquery.com/jquery-2.2.4.min.js"
+	  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	  crossorigin="anonymous" defer></script>
+
+	<!--BOOTSTRAP-->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous" defer></script>
+
+	 <script src="https://code.jquery.com/jquery.js" defer></script>
+	 <script src="http://localhost:1337/socket.io/socket.io.js" defer></script>
+
+	 <!-- CSS Principal -->
+	 <link rel="stylesheet" type="text/css" href="css/basic_style.css">
+	 
+</head>
+<body>
+	<!--La pantalla que se muestra al inicio y al perder-->
+	<div id="inicio" class="centered">
+		<div id="innerInicio" class="input-group centered">
+			<h1>kikker.io</h1>
+			<form id="nicknameYSquash" class="input-group">
+				<!--Campo de texto para el nickname-->
+		    	<input id="nickname" type="texto" class="form-control input-lg" placeholder="Nickname" maxlength=15 style="word-wrap: break-word;" />
+		    	<!--Botón para iniciar-->
+		    	<span class="input-group-btn">
+					<button class="btn btn-lg btn-primary start" type="submit">SQUASH!</button>
+				</span>
+			</form>
+	  	</div>
+	</div>
+
+	<!--El div del juego-->
+	<div id="game">
+		
+	</div>
+
+	<!--Div del top 10-->
+	<!--
+	<div id="backLeaderboard">
+		<div id="leaderboard">
+			<h4>Leaderboard</h4>
+		</div>
+	</div>
+	-->
+
+	<!--Parrafo donde está el puntaje-->
+	<p id="parrafoScore" style="display: none">
+		<br>
+		<span id="score" class="label label-primary">Your size: 10</span>
+	</p>
+
+	<script src='js/preloadjs-0.1.0.min.js' defer></script>
+	<script src='js/kinetic-v4.3.3.min.js' defer></script>
+	<script src='js/heroe.js' defer></script>
+	<script src='js/enemigo.js' defer></script>
+	<script src='js/plataforma.js' defer></script>
+	<script src='js/fondo.js' defer></script>
+	<script src='js/moneda.js' defer></script>
+	<script src='js/game.js' defer></script>
+	<script>
+		var Preloader;
+			var imgsAssets = ['imgs/congruent_pentagon.png'];
+			window.addEventListener('load', function(){
+				Preloader = new PreloadJS();
+				Preloader.onProgress  = progresoCarga;
+				cargar();
+				//Identifica y escucha a los botones Jugar
+				//var iniciadores = document.getElementsByClassName('start');
+				//iniciadores[0].addEventListener('click',iniciarJuego);
+			});
+			function cargar(){
+				while(imgsAssets.length > 0){
+					var url = imgsAssets.shift();
+					Preloader.loadFile(url);
+				}
+			}
+			function progresoCarga(){
+				if(Preloader.progress == 1){
+					//nivelUno();
+					//Para mostrar pantalla de inicio:
+					document.querySelector('#inicio').style.display = 'block';
+				}
+			}
+			function iniciarJuego(){
+				nivelUno();
+				//Ocultar las pantallas al presionar Jugar
+				document.querySelector('#inicio').style.display = 'none';
+				//Muestra la pantalla de juego
+				//document.querySelector('#game').style.display = 'block';
+				document.querySelector('#parrafoScore').style.display = 'inline-block';
+				//document.querySelector('#backLeaderboard').style.display = 'block';
+				
+			}
+	</script>
+	<script src='js/main.js' defer></script>
+
+</body>
+</html>
